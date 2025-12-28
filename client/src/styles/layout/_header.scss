@@ -1,0 +1,76 @@
+.header {
+  background-color: $white;
+  border-bottom: 1px solid $gray-200;
+  box-shadow: $shadow-sm;
+  position: sticky;
+  top: 0;
+  z-index: $z-sticky;
+  
+  &__container {
+    @include container;
+    @include flex-between;
+    padding-top: $spacing-md;
+    padding-bottom: $spacing-md;
+  }
+  
+  &__logo {
+    @include flex-center;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+    text-decoration: none;
+    
+    @include respond-to(md) {
+      font-size: $font-size-2xl;
+    }
+    
+    &:hover {
+      color: $primary-dark;
+    }
+  }
+  
+  &__nav {
+    display: none;
+    
+    @include respond-to(md) {
+      display: flex;
+      align-items: center;
+      gap: $spacing-lg;
+    }
+  }
+  
+  &__nav-link {
+    color: $gray-600;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+    transition: color $transition-fast;
+    
+    &:hover {
+      color: $primary-color;
+    }
+    
+    &--active {
+      color: $primary-color;
+    }
+  }
+  
+  &__mobile-menu {
+    display: block;
+    
+    @include respond-to(md) {
+      display: none;
+    }
+  }
+  
+  &__mobile-menu-button {
+    @include button-base;
+    background-color: transparent;
+    color: $gray-600;
+    padding: $spacing-sm;
+    
+    &:hover {
+      background-color: $gray-100;
+      color: $gray-900;
+    }
+  }
+}

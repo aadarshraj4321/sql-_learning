@@ -1,0 +1,146 @@
+.card {
+  @include card;
+  
+  &__header {
+    margin-bottom: $spacing-lg;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $gray-900;
+    margin-bottom: $spacing-sm;
+    
+    @include respond-to(md) {
+      font-size: $font-size-xl;
+    }
+  }
+  
+  &__subtitle {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    margin-bottom: 0;
+  }
+  
+  &__body {
+    margin-bottom: $spacing-lg;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__footer {
+    border-top: 1px solid $gray-200;
+    padding-top: $spacing-lg;
+    margin-top: $spacing-lg;
+    
+    &:first-child {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+  }
+  
+  // Card variants
+  &--compact {
+    padding: $spacing-md;
+    
+    @include respond-to(md) {
+      padding: $spacing-lg;
+    }
+  }
+  
+  &--bordered {
+    border: 1px solid $gray-200;
+    box-shadow: none;
+  }
+  
+  &--elevated {
+    box-shadow: $shadow-lg;
+  }
+  
+  &--interactive {
+    cursor: pointer;
+    transition: all $transition-fast;
+    
+    &:hover {
+      box-shadow: $shadow-lg;
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// Assignment card specific styles
+.assignment-card {
+  @include card;
+  cursor: pointer;
+  transition: all $transition-fast;
+  
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &__difficulty {
+    display: inline-flex;
+    align-items: center;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-md;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    
+    &--beginner {
+      background-color: rgba($success-color, 0.1);
+      color: darken($success-color, 10%);
+    }
+    
+    &--intermediate {
+      background-color: rgba($warning-color, 0.1);
+      color: darken($warning-color, 10%);
+    }
+    
+    &--advanced {
+      background-color: rgba($error-color, 0.1);
+      color: darken($error-color, 10%);
+    }
+  }
+  
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+    margin-top: $spacing-sm;
+  }
+  
+  &__tag {
+    padding: $spacing-xs $spacing-sm;
+    background-color: $gray-100;
+    color: $gray-700;
+    font-size: $font-size-xs;
+    border-radius: $border-radius-sm;
+  }
+  
+  &__meta {
+    @include flex-between;
+    margin-top: $spacing-md;
+    padding-top: $spacing-md;
+    border-top: 1px solid $gray-200;
+    font-size: $font-size-sm;
+    color: $gray-500;
+  }
+}

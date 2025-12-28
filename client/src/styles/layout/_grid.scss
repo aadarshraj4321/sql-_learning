@@ -1,0 +1,81 @@
+.grid {
+  display: grid;
+  gap: $spacing-md;
+  
+  @include respond-to(md) {
+    gap: $spacing-lg;
+  }
+  
+  &--cols-1 {
+    grid-template-columns: 1fr;
+  }
+  
+  &--cols-2 {
+    grid-template-columns: 1fr;
+    
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  &--cols-3 {
+    grid-template-columns: 1fr;
+    
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include respond-to(md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  &--cols-4 {
+    grid-template-columns: 1fr;
+    
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include respond-to(md) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+// Assignment attempt layout
+.assignment-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+  height: calc(100vh - 120px); // Adjust based on header height
+  
+  @include respond-to(md) {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-lg;
+  }
+  
+  @include respond-to(lg) {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.assignment-layout__left {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  
+  @include respond-to(md) {
+    gap: $spacing-lg;
+  }
+}
+
+.assignment-layout__right {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  
+  @include respond-to(md) {
+    gap: $spacing-lg;
+  }
+}

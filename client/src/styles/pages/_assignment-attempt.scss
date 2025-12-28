@@ -1,0 +1,300 @@
+.assignment-attempt {
+  @include container;
+  height: calc(100vh - 120px); // Account for header
+  
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+    height: calc(100vh - 120px);
+    
+    @include respond-to(md) {
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-lg;
+    }
+    
+    @include respond-to(lg) {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+  
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    
+    @include respond-to(md) {
+      gap: $spacing-lg;
+    }
+  }
+  
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    
+    @include respond-to(md) {
+      gap: $spacing-lg;
+    }
+  }
+  
+  &__question-panel {
+    @include card;
+    flex: 0 0 auto;
+    
+    &-header {
+      @include flex-between;
+      margin-bottom: $spacing-lg;
+    }
+    
+    &-title {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-semibold;
+      color: $gray-900;
+      margin: 0;
+      
+      @include respond-to(md) {
+        font-size: $font-size-2xl;
+      }
+    }
+    
+    &-difficulty {
+      display: inline-flex;
+      align-items: center;
+      padding: $spacing-xs $spacing-sm;
+      border-radius: $border-radius-md;
+      font-size: $font-size-xs;
+      font-weight: $font-weight-medium;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      
+      &--beginner {
+        background-color: rgba($success-color, 0.1);
+        color: darken($success-color, 10%);
+      }
+      
+      &--intermediate {
+        background-color: rgba($warning-color, 0.1);
+        color: darken($warning-color, 10%);
+      }
+      
+      &--advanced {
+        background-color: rgba($error-color, 0.1);
+        color: darken($error-color, 10%);
+      }
+    }
+    
+    &-question {
+      font-size: $font-size-base;
+      line-height: $line-height-relaxed;
+      color: $gray-700;
+      background-color: $gray-50;
+      padding: $spacing-md;
+      border-radius: $border-radius-md;
+      border-left: 4px solid $primary-color;
+    }
+  }
+  
+  &__sample-data {
+    @include card;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    
+    &-header {
+      @include flex-between;
+      margin-bottom: $spacing-lg;
+    }
+    
+    &-title {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $gray-900;
+      margin: 0;
+    }
+    
+    &-tabs {
+      display: flex;
+      gap: $spacing-xs;
+      border-bottom: 1px solid $gray-200;
+      margin-bottom: $spacing-lg;
+    }
+    
+    &-tab {
+      @include button-base;
+      background-color: transparent;
+      color: $gray-600;
+      border-bottom: 2px solid transparent;
+      border-radius: 0;
+      padding: $spacing-sm $spacing-md;
+      
+      &:hover {
+        color: $gray-900;
+        background-color: $gray-50;
+      }
+      
+      &--active {
+        color: $primary-color;
+        border-bottom-color: $primary-color;
+        
+        &:hover {
+          color: $primary-color;
+          background-color: transparent;
+        }
+      }
+    }
+    
+    &-content {
+      flex: 1;
+      overflow: auto;
+    }
+  }
+  
+  &__editor-panel {
+    @include card;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    
+    &-header {
+      @include flex-between;
+      margin-bottom: $spacing-lg;
+    }
+    
+    &-title {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $gray-900;
+      margin: 0;
+    }
+    
+    &-actions {
+      display: flex;
+      gap: $spacing-sm;
+    }
+    
+    &-editor {
+      flex: 1;
+      border: 1px solid $gray-300;
+      border-radius: $border-radius-md;
+      overflow: hidden;
+      
+      &--error {
+        border-color: $error-color;
+      }
+      
+      &--success {
+        border-color: $success-color;
+      }
+    }
+    
+    &-footer {
+      margin-top: $spacing-md;
+      padding-top: $spacing-md;
+      border-top: 1px solid $gray-200;
+      font-size: $font-size-sm;
+      color: $gray-600;
+    }
+  }
+  
+  &__results-panel {
+    @include card;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    
+    &-header {
+      @include flex-between;
+      margin-bottom: $spacing-lg;
+    }
+    
+    &-title {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $gray-900;
+      margin: 0;
+    }
+    
+    &-meta {
+      font-size: $font-size-sm;
+      color: $gray-600;
+    }
+    
+    &-content {
+      flex: 1;
+      overflow: auto;
+    }
+    
+    &-empty {
+      @include flex-center;
+      flex-direction: column;
+      height: 200px;
+      color: $gray-500;
+      
+      &-icon {
+        font-size: $font-size-3xl;
+        margin-bottom: $spacing-md;
+        color: $gray-300;
+      }
+      
+      &-text {
+        font-size: $font-size-base;
+      }
+    }
+    
+    &-error {
+      background-color: rgba($error-color, 0.1);
+      border: 1px solid rgba($error-color, 0.2);
+      border-radius: $border-radius-md;
+      padding: $spacing-md;
+      
+      &-title {
+        font-weight: $font-weight-semibold;
+        color: $error-color;
+        margin-bottom: $spacing-sm;
+      }
+      
+      &-message {
+        font-family: $font-family-mono;
+        font-size: $font-size-sm;
+        color: darken($error-color, 10%);
+        white-space: pre-wrap;
+      }
+    }
+  }
+  
+  &__loading {
+    @include flex-center;
+    flex-direction: column;
+    height: 200px;
+    
+    .spinner {
+      margin-bottom: $spacing-md;
+      @include spinner(24px);
+    }
+    
+    &-text {
+      font-size: $font-size-sm;
+      color: $gray-600;
+    }
+  }
+  
+  // Mobile adjustments
+  @media (max-width: $breakpoint-md - 1px) {
+    height: auto;
+    
+    .assignment-layout {
+      grid-template-columns: 1fr;
+      height: auto;
+    }
+    
+    .assignment-attempt__sample-data,
+    .assignment-attempt__editor-panel,
+    .assignment-attempt__results-panel {
+      min-height: 300px;
+    }
+  }
+}

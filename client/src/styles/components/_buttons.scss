@@ -1,0 +1,154 @@
+.btn {
+  @include button-base;
+  
+  // Primary button
+  &--primary {
+    background-color: $primary-color;
+    color: $white;
+    
+    &:hover:not(:disabled) {
+      background-color: $primary-dark;
+    }
+    
+    &:active {
+      background-color: $primary-dark;
+      transform: translateY(1px);
+    }
+  }
+  
+  // Secondary button
+  &--secondary {
+    background-color: $gray-200;
+    color: $gray-900;
+    
+    &:hover:not(:disabled) {
+      background-color: $gray-300;
+    }
+    
+    &:active {
+      background-color: $gray-300;
+      transform: translateY(1px);
+    }
+  }
+  
+  // Success button
+  &--success {
+    background-color: $success-color;
+    color: $white;
+    
+    &:hover:not(:disabled) {
+      background-color: darken($success-color, 10%);
+    }
+  }
+  
+  // Warning button
+  &--warning {
+    background-color: $warning-color;
+    color: $white;
+    
+    &:hover:not(:disabled) {
+      background-color: darken($warning-color, 10%);
+    }
+  }
+  
+  // Error button
+  &--error {
+    background-color: $error-color;
+    color: $white;
+    
+    &:hover:not(:disabled) {
+      background-color: darken($error-color, 10%);
+    }
+  }
+  
+  // Outline variants
+  &--outline {
+    background-color: transparent;
+    border: 1px solid $gray-300;
+    color: $gray-700;
+    
+    &:hover:not(:disabled) {
+      background-color: $gray-50;
+      border-color: $gray-400;
+    }
+  }
+  
+  &--outline-primary {
+    background-color: transparent;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    
+    &:hover:not(:disabled) {
+      background-color: $primary-color;
+      color: $white;
+    }
+  }
+  
+  // Size variants
+  &--sm {
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-size-xs;
+  }
+  
+  &--lg {
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-lg;
+  }
+  
+  &--xl {
+    padding: $spacing-lg $spacing-xl;
+    font-size: $font-size-xl;
+  }
+  
+  // Full width
+  &--full {
+    width: 100%;
+  }
+  
+  // Loading state
+  &--loading {
+    position: relative;
+    color: transparent;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include spinner(16px, $white);
+    }
+  }
+  
+  // Icon button
+  &--icon {
+    padding: $spacing-sm;
+    width: auto;
+    height: auto;
+    min-width: 40px;
+    min-height: 40px;
+    
+    @include respond-to(md) {
+      min-width: 44px;
+      min-height: 44px;
+    }
+  }
+}
+
+// Button group
+.btn-group {
+  display: flex;
+  gap: $spacing-sm;
+  
+  &--vertical {
+    flex-direction: column;
+  }
+  
+  &--center {
+    justify-content: center;
+  }
+  
+  &--end {
+    justify-content: flex-end;
+  }
+}
